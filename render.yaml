@@ -2,7 +2,7 @@ services:
   - type: web
     name: ru-crypto-bot-pro
     env: python
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install -r requirements-render.txt
     startCommand: python crypto_chatbot.py
     envVars:
       - key: RENDER
