@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: ru-crypto-bot-pro
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python crypto_chatbot.py
+    envVars:
+      - key: RENDER
+        value: "true"
+      - key: PYTHON_VERSION
+        value: "3.9.18"
+    scaling:
+      minInstances: 1
+      maxInstances: 1
+    plan: free

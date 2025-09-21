@@ -63,3 +63,9 @@ models/
 *.tmp
 *.temp
 temp/
+
+# Render специфичные файлы (опционально)
+.render/
+
+# Docker
+.dockerignore

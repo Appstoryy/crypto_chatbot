@@ -2404,12 +2404,24 @@ with gr.Blocks(title="RU Crypto Bot Pro - AI Trading Assistant", theme=gr.themes
     """)
 
 if __name__ == "__main__":
-    # Публичная ссылка через gradio-туннель + явные параметры сервера.
-    # Подойдёт в любой среде, даже если localhost блокируется прокси/VPN.
+    # Настройка для деплоя на Render и локальной разработки
+    import os
+    
+    # Render использует переменную окружения PORT
+    port = int(os.environ.get("PORT", 7860))
+    
+    # Для Render отключаем share (не нужно на продакшене)
+    is_production = os.environ.get("RENDER", False)
+    
+    print(f"🚀 Starting RU Crypto Bot Pro on port {port}")
+    print(f"🌍 Environment: {'Production (Render)' if is_production else 'Development'}")
+    
     demo.launch(
         server_name="0.0.0.0",
-        server_port=7860,
-        share=True,
-        show_error=True
+        server_port=port,
+        share=not is_production,  # Share только в dev режиме
+        show_error=True,
+        enable_queue=True,  # Для стабильности на продакшене
+        max_threads=10  # Ограничиваем потоки для Render
     )
 
