@@ -2,7 +2,7 @@
 # Core dependencies
 gradio>=4.0.0
 
-# Lightweight ML (без torch для экономии ресурсов)
+# Lightweight ML
 numpy>=1.24.0
 pandas>=2.0.0
 scikit-learn>=1.3.0
@@ -12,8 +12,11 @@ transformers>=4.30.0
 torch>=2.0.0,<2.1.0  # Фиксированная версия для стабильности
 datasets>=2.14.0
 
-# Tokenization
+# Tokenization (ОБЯЗАТЕЛЬНО для transformers)
 sentencepiece>=0.1.99
+protobuf>=3.20.0  # ИСПРАВЛЕНИЕ: добавляем protobuf
+tokenizers>=0.13.0  # Для transformers
+huggingface-hub>=0.15.0  # Для загрузки моделей
 
 # Visualization
 matplotlib>=3.7.0
